@@ -104,7 +104,7 @@ if __name__ == '__main__':
     linear = DynamicArray() # created linear object of DynamicArray class
     geometric = DynamicArray() # created geometric object of DynamicArray class
 # be aware when dealing with a large n matplotlib.pylot sometimes gets overwhelmed and causes missing data on graph
-    n = 300 # set number of items to 10000
+    n = 10000 # set number of items to 10000
 
     linear_num_cost = linear.num_cost(n,lingeo='linear') # set linear_num_cost to store tuple of num of items list and cost list
     plt.bar(linear_num_cost[0],linear_num_cost[1]) # plotted x = num of items, y = cost list
@@ -141,6 +141,16 @@ if __name__ == '__main__':
     print(f'Linear cost on average: ${linear.rationalize()} for {n} items')
     print(f'Geometric cost on average: ${geometric.rationalize()} for {n} items')
 
-    print('Therefore Geometric is better than linear when dealing with a large number of items.')
+    print('''
+    Geometric is better than linear when dealing with a large number of items.
+    This is because linear will have to resize our array more frequently (every 10 items).
+    for geometric since it doubles the capacity everytime it resizes it does not resize as
+    frequent. Sure the resizing for geometric costs more, however linear's costs adds up
+    because it resizes very frequently. The overall quantity of cyber dollars spent for 
+    any computation in geometric resizing will be proportionate to the total time consumed.
+    Meaning, the amortized running time of a single append operation is O(1) and n append 
+    operation is O(n). The running time for linearly expanding the array by a fixed amount is 
+    theta(n^2). Therefore geometric is faster than linear in the amortized cost time analysis.
+    ''')
 
 
